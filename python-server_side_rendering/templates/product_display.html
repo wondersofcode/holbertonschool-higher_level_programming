@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+</head>
+<body>
+
+    {% if error %}
+        <h2 style="color:red;">{{ error }}</h2>
+    {% elif not products %}
+        <h3>No products found.</h3>
+    {% else %}
+        <h1>Product List</h1>
+
+        <table border="1" cellpadding="8">
+            <tr>
+                {% for key in products[0].keys() %}
+                    <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+
+            {% for product in products %}
+                <tr>
+                    {% for value in product.values() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+</body>
+</html>
